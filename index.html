@@ -17,13 +17,44 @@
 
 <body>
   <!-- <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script> -->
-  <script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script>
+  <!-- <script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script> -->
   <!-- <script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script> -->
+
+  <script src="assets/js/BrowserSystem.js"></script>
   <script type="module">
     // import test from './src/test.js'
     import sortAlgorithm from './src/algorithm-sort.js'
+    import Score from './src/Score.js'
+    import List from './src/List.js'
+    import { baseChange, convertTo10 } from './src/baseChange.js'
+
     sortAlgorithm.bubbule([3, 10, 2, 1])
     sortAlgorithm.selectionSort([3, 10, 2, 1])
+
+    const jackieScore = new Score('jackie')
+    jackieScore.addScore([90, 80, 79])
+    const jackieScoreAverage = jackieScore.getScoreAverage()
+    console.info('jackie score average:', jackieScoreAverage)
+
+    const list = new List([2, 'a', 'd', 1, '05'])
+    // list.insertBiggerThen(1)
+    list.insertBiggerThen('quit')
+    list.insertBiggerThen(0)
+    
+    const lessList = new List([2, 'a', 'd', 1, '05'])
+    lessList.insertLessThen(0)
+    lessList.insertLessThen('3')
+
+    const strb2 = baseChange(10, 2)
+    console.info(10, '->', strb2)
+    const strb8 = baseChange(500, 8)
+    console.info(500, '->', strb8)
+    const strb16 = baseChange(500, 16)
+    console.info(500, '->', strb16)
+
+    console.info(strb2, '->', convertTo10(strb2, 2, 10))
+    console.info(strb8, '->', convertTo10(strb8, 8, 10))
+    console.info(strb16, '->', convertTo10(strb16, 16, 10))
   </script>
 </body>
 </html>
