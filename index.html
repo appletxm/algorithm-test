@@ -27,6 +27,7 @@
     import Score from './src/Score.js'
     import List from './src/List.js'
     import { baseChange, convertTo10 } from './src/baseChange.js'
+    import SortBasic from './src/algorithm-sort-basic.js'
 
     sortAlgorithm.bubbule([3, 10, 2, 1])
     sortAlgorithm.selectionSort([3, 10, 2, 1])
@@ -55,6 +56,9 @@
     console.info(strb2, '->', convertTo10(strb2, 2, 10))
     console.info(strb8, '->', convertTo10(strb8, 8, 10))
     console.info(strb16, '->', convertTo10(strb16, 16, 10))
+
+    const sortBasic = new SortBasic()
+    sortBasic.doSort([66, 52, 93, 45, 32, 21, 88, 79, 21, 34, 67])
   </script>
 </body>
 </html>

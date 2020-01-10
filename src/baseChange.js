@@ -15,7 +15,7 @@ const baseChange = function(num, base) {
 
   while (num !== 0) {
     const mode = num % base
-    stack.push(base === 16 && mode > 10 ? base16[mode] : mode)
+    stack.push(base === 16 && mode >= 10 ? base16[mode] : mode)
     num = Math.floor(num / base)
   }
 
