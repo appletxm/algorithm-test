@@ -19,6 +19,7 @@
   <!-- <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script> -->
   <!-- <script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script> -->
   <!-- <script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script> -->
+  <input type="file" id="test-file-txt">
 
   <script src="assets/js/BrowserSystem.js"></script>
   <script type="module">
@@ -26,8 +27,16 @@
     import sortAlgorithm from './src/algorithm-sort.js'
     import Score from './src/Score.js'
     import List from './src/List.js'
-    import { baseChange, convertTo10 } from './src/baseChange.js'
+    import { baseChange, convertTo10 } from './src/base-change.js'
     import SortBasic from './src/algorithm-sort-basic.js'
+    import isPalindrome from './src/is-palindrome.js'
+    import { factorial2, factorial } from './src/factorial.js'
+    import LinkList from './src/LinkList.js'
+    import Dictionary from './src/Dictionary.js'
+    import dicStatsWord from './src/dic-stats-word.js'
+    import HashTable from './src/HashTable.js'
+    import HashTableOpenLink from './src/HashTableOpenLink.js'
+    import genStudentData from './src/hash-table-score.js'
 
     sortAlgorithm.bubbule([3, 10, 2, 1])
     sortAlgorithm.selectionSort([3, 10, 2, 1])
@@ -37,6 +46,7 @@
     const jackieScoreAverage = jackieScore.getScoreAverage()
     console.info('jackie score average:', jackieScoreAverage)
 
+    console.info('**********list*******')
     const list = new List([2, 'a', 'd', 1, '05'])
     // list.insertBiggerThen(1)
     list.insertBiggerThen('quit')
@@ -46,6 +56,7 @@
     lessList.insertLessThen(0)
     lessList.insertLessThen('3')
 
+    console.info('**********stack*******')
     const strb2 = baseChange(10, 2)
     console.info(10, '->', strb2)
     const strb8 = baseChange(500, 8)
@@ -59,6 +70,86 @@
 
     const sortBasic = new SortBasic()
     sortBasic.doSort([8, 5, 66, 52, 93, 45, 32, 21, 88, 79, 21, 34, 67])
+
+    console.info('-----isPalindrome aba:', isPalindrome('aba'), ' string:', isPalindrome('string'))
+    console.info('-----factorial 3:', factorial(3), ' 4:', factorial(4), ' 5:', factorial(5), ' ', factorial2(3), factorial2(4), factorial2(5))
+
+    console.info('**********link list*******')
+    const linkList = new LinkList()
+    linkList.insert('Conway', 'head')
+    linkList.insert('Russellville', 'Conway')
+    linkList.insert('Carlisle', 'Russellville')
+    linkList.insert('Alma', 'Carlisle')
+    linkList.display()
+    linkList.remove('Carlisle')
+    linkList.display()
+
+    console.info('*****************Dictionary*****************')
+    const dic = new Dictionary()
+    dic.add('Mike', '123')
+      .add('Raymond', '125')
+      .add('Jennifer', '987')
+      .add('Jonathan', '666')
+      .add('David', '345')
+      .add('Cynthia', '456')
+    console.info('David\'s extension: ' + dic.find('David'))
+    console.info('count: ' + dic.count())
+    dic.showAll()
+    dic.remove('David')
+    console.info('after remove count: ' + dic.count())
+    dic.showAll()
+    dic.clear()
+    console.info('after clear count:', dic.count())
+
+    document.querySelector('#test-file-txt').addEventListener('change', function(e){
+      const file = e.target.files[0]
+      const reader = new FileReader()
+      reader.readAsText(file, 'utf8')
+      reader.onload = function(e) {
+        console.info(e.target.result)
+      }
+      reader.onprogress = function(e) {
+        console.info(e.loaded, e.total)
+      }
+    }, false)
+
+    dicStatsWord('the brown fox jumped over the blue fox')
+
+    console.info('*****************Has Table*****************')
+    const hashTable = new HashTable()
+    hashTable
+      .put('David', 'David')
+      .put('Jennifer', 'Jennifer')
+      .put('Donnie', 'Donnie')
+      .put('Raymond', 'Raymond')
+      .put('Cynthia', 'Cynthia')
+      .put('Mike', 'Mike')
+      .put('Clayton', 'Clayton')
+      .put('Danny', 'Danny')
+      .put('Jonathan', 'Jonathan')
+    hashTable.showDistro()
+
+    const students = genStudentData(10)
+    const hashStudent = new HashTable()
+    students.forEach(student => {
+      hashStudent.put(student, student.substr(9))
+    })
+    hashStudent.showDistro()
+    console.info(students[0], ':', hashStudent.get(students[0]))
+
+    const hashTableLink = new HashTableOpenLink()
+    hashTableLink
+      .put('David', 'David')
+      .put('Jennifer', 'Jennifer')
+      .put('Donnie', 'Donnie')
+      .put('Raymond', 'Raymond')
+      .put('Cynthia', 'Cynthia')
+      .put('Mike', 'Mike')
+      .put('Clayton', 'Clayton')
+      .put('Danny', 'Danny')
+      .put('Jonathan', 'Jonathan')
+    hashTableLink.showDistro()
+    console.info('Clayton:', hashTableLink.get('Clayton'))
   </script>
 </body>
 </html>
