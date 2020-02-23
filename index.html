@@ -37,6 +37,7 @@
     import HashTable from './src/HashTable.js'
     import HashTableOpenLink from './src/HashTableOpenLink.js'
     import genStudentData from './src/hash-table-score.js'
+    import Set from './src/Set.js'
 
     sortAlgorithm.bubbule([3, 10, 2, 1])
     sortAlgorithm.selectionSort([3, 10, 2, 1])
@@ -150,6 +151,43 @@
       .put('Jonathan', 'Jonathan')
     hashTableLink.showDistro()
     console.info('Clayton:', hashTableLink.get('Clayton'))
+
+    console.info('*****************Set*****************')
+    const set = new Set()
+    set.add('David')
+    set.add('Jennifer')
+    set.add('Cynthia')
+    set.add('Mike')
+    set.add('Raymond')
+    if (!set.add('Mike')) {
+      console.info('Can\'t add Mike, muse already be in set')
+    }
+    const set2 = new Set()
+    set2.add('Alisa')
+    set2.add('Clayton')
+    set2.add('Mike')
+
+    const unionSet = set.union(set2)
+    unionSet.show()
+    const intersectSet = set.intersect(set2)
+    intersectSet.show()
+
+    const set3 = new Set()
+    set3.add('Mike')
+    const isSubSet = set2.subset(set)
+    console.info('set2 is subset for set:', set.dataSore, set2.dataSore, set2.subset(set))
+    console.info('set3 is subset for set:', set.dataSore, set3.dataSore, set3.subset(set))
+    console.info('difference set between set2 and set3:', set2.dataSore, set3.dataSore, set2.difference(set3).dataSore)
+
+    const set4 = new Set()
+    set4.add(12)
+    set4.add(8)
+    set4.add(32)
+    set4.add(23)
+    set4.add(5)
+    set4.add(11)
+    console.info(set4.dataSore, `higher 3 is: ${set4.higher(3)}`)
+    console.info(set4.dataSore, `lower 30 is: ${set4.lower(30)}`)
   </script>
 </body>
 </html>
