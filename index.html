@@ -38,6 +38,7 @@
     import HashTableOpenLink from './src/HashTableOpenLink.js'
     import genStudentData from './src/hash-table-score.js'
     import Set from './src/Set.js'
+    import BST from './src/BST.js'
 
     sortAlgorithm.bubbule([3, 10, 2, 1])
     sortAlgorithm.selectionSort([3, 10, 2, 1])
@@ -188,6 +189,30 @@
     set4.add(11)
     console.info(set4.dataSore, `higher 3 is: ${set4.higher(3)}`)
     console.info(set4.dataSore, `lower 30 is: ${set4.lower(30)}`)
+
+    console.info('*****************BST*****************')
+    const bst = new BST()
+    bst.insert(23)
+    bst.insert(54)
+    bst.insert(13)
+    bst.insert(7)
+    bst.insert(9)
+    bst.insert(15)
+    bst.insert(46)
+    bst.insert(77)
+    bst.insert(42)
+    console.info('inorder traversal: ')
+    bst.inOrder(bst.root)
+    console.info('preorder traversal: ')
+    bst.preOrder(bst.root)
+    console.info('preorder traversal: ')
+    bst.postOrder(bst.root)
+    console.info('find max and min:', bst.getMin(), bst.getMax())
+    console.info('find some data: 9', bst.search(9), ' 54:', bst.search(54))
+    console.info('find min right node for root:', bst.getSmallestRightNode(bst.root.right))
+    console.info('find max left node for root:', bst.getBiggestLeftNode(bst.root.left))
+    bst.remove(54)
+    bst.preOrder(bst.root)
   </script>
 </body>
 </html>
