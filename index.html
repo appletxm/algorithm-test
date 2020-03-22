@@ -39,6 +39,8 @@
     import genStudentData from './src/hash-table-score.js'
     import Set from './src/Set.js'
     import BST from './src/BST.js'
+    import Sort, {quickSort, qSort} from './src/Sort.js'
+    import { seqSearch, binSearch } from './src/Search.js'
 
     sortAlgorithm.bubbule([3, 10, 2, 1])
     sortAlgorithm.selectionSort([3, 10, 2, 1])
@@ -53,7 +55,7 @@
     // list.insertBiggerThen(1)
     list.insertBiggerThen('quit')
     list.insertBiggerThen(0)
-    
+
     const lessList = new List([2, 'a', 'd', 1, '05'])
     lessList.insertLessThen(0)
     lessList.insertLessThen('3')
@@ -201,6 +203,11 @@
     bst.insert(46)
     bst.insert(77)
     bst.insert(42)
+    bst.insert(18)
+    bst.insert(11)
+    bst.insert(19)
+    bst.insert(17)
+    bst.insert(14)
     console.info('inorder traversal: ')
     bst.inOrder(bst.root)
     console.info('preorder traversal: ')
@@ -211,8 +218,39 @@
     console.info('find some data: 9', bst.search(9), ' 54:', bst.search(54))
     console.info('find min right node for root:', bst.getSmallestRightNode(bst.root.right))
     console.info('find max left node for root:', bst.getBiggestLeftNode(bst.root.left))
-    bst.remove(54)
+    // bst.remove(54)
+    // bst.preOrder(bst.root)
+    bst.remove(13)
     bst.preOrder(bst.root)
+
+    console.info('*****************Sort*****************')
+    const myNumbers = new Sort(100)
+    myNumbers.setData()
+    console.info(myNumbers.dataStore)
+    const bubbleData = JSON.parse(JSON.stringify(myNumbers.dataStore))
+    const selectData = JSON.parse(JSON.stringify(myNumbers.dataStore))
+    const quickData = JSON.parse(JSON.stringify(myNumbers.dataStore))
+
+    // console.info(myNumbers.toString())
+    const bubbleStart = new Date() - 0
+    myNumbers.bubbleSort(bubbleData)
+    const bubbleEnd= new Date() - 0
+    console.info('after bubble:', bubbleEnd - bubbleStart)
+
+    const selectStart = new Date() - 0
+    myNumbers.selectSort(selectData)
+    const selectEnd = new Date() - 0
+    console.info('after select:', selectEnd - selectStart)
+
+    const quickStart = new Date() - 0
+    myNumbers.quickSort(quickData)
+    const quickEnd = new Date() - 0
+    console.info('after quick sort:', quickEnd - quickStart)
+
+    const arrTest = [34, 10, 63, 24, 50, 72, 96, 34, 34, 38, 8, 23, 54, 97, 84, 8, 32, 61, 34, 48, 17, 77, 21, 94, 87, 37, 88, 48, 7, 57, 92, 72, 42, 2, 62, 83, 78, 70, 24, 67, 18, 69, 84, 63, 87, 32, 65, 17, 68, 33, 54, 43, 83, 45, 12, 75, 0, 74, 65, 9, 32, 82, 18, 17, 21, 75, 98, 33, 23, 33, 5, 68, 62, 7, 34, 74, 14, 60, 44, 92, 30, 85, 94, 64, 82, 57, 94, 6, 77, 0, 29, 15, 87, 3, 40, 89, 25, 80, 10, 13]
+    console.info('*****************Search*****************')
+    console.info('seqSearch search 50 ', seqSearch(arrTest, 77))
+    console.info('binSearch search 50', binSearch(arrTest, 77))
   </script>
 </body>
 </html>
