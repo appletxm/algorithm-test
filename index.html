@@ -40,7 +40,9 @@
     import Set from './src/Set.js'
     import BST from './src/BST.js'
     import Sort, {quickSort, qSort} from './src/Sort.js'
-    import { seqSearch, binSearch } from './src/Search.js'
+    import { seqSearch, binSearch, countTimes } from './src/Search.js'
+    import SearchCommonWord from './src/SearchCommonWord.js'
+    import { packageFn } from './src/Package.js'
 
     sortAlgorithm.bubbule([3, 10, 2, 1])
     sortAlgorithm.selectionSort([3, 10, 2, 1])
@@ -248,9 +250,25 @@
     console.info('after quick sort:', quickEnd - quickStart)
 
     const arrTest = [34, 10, 63, 24, 50, 72, 96, 34, 34, 38, 8, 23, 54, 97, 84, 8, 32, 61, 34, 48, 17, 77, 21, 94, 87, 37, 88, 48, 7, 57, 92, 72, 42, 2, 62, 83, 78, 70, 24, 67, 18, 69, 84, 63, 87, 32, 65, 17, 68, 33, 54, 43, 83, 45, 12, 75, 0, 74, 65, 9, 32, 82, 18, 17, 21, 75, 98, 33, 23, 33, 5, 68, 62, 7, 34, 74, 14, 60, 44, 92, 30, 85, 94, 64, 82, 57, 94, 6, 77, 0, 29, 15, 87, 3, 40, 89, 25, 80, 10, 13]
+    const arrTestSort = myNumbers.selectSort(JSON.parse(JSON.stringify(arrTest)))
     console.info('*****************Search*****************')
-    console.info('seqSearch search 50 ', seqSearch(arrTest, 77))
-    console.info('binSearch search 50', binSearch(arrTest, 77))
+    console.info('seqSearch search 77 ', seqSearch(arrTest, 77))
+    console.info(arrTestSort)
+    console.info('binSearch search 94', binSearch(arrTestSort, 94), ' count times:', countTimes(arrTestSort, 94))
+
+
+    console.info('****************High Apply**********************')
+    const commonStr = new SearchCommonWord()
+    const str1 = 'hashtab'
+    const str2 = 'phtab'
+    const strCommon = commonStr.goGetCommonStr(str1, str2)
+    const strCommon2 = commonStr.goGetCommonStrMy(str1, str2)
+    console.info(`'${str1}' and '${str2}' have the common string '${strCommon}'`)
+    console.info(`use my own function '${str1}' and '${str2}' have the common string '${strCommon2}'`)
+
+    console.info('****************package**********************')
+    const getMax = packageFn()
+    console.info(`getMax: ${JSON.stringify(getMax)}`)
   </script>
 </body>
 </html>

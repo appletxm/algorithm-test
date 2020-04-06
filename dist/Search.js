@@ -11,12 +11,37 @@ function seqSearch(arr, data) {
   return false;
 }
 
+function countTimes(arr, data) {
+  var count = 0;
+  var pos = binSearch(arr, data);
+  // debugger
+  if (pos >= 0) {
+    count++;
+    for (var i = pos - 1; i >= 0; i--) {
+      if (arr[i] === data) {
+        count++;
+      } else {
+        break;
+      }
+    }
+
+    for (var _i = pos + 1; _i < arr.length; _i++) {
+      if (arr[_i] === data) {
+        count++;
+      } else {
+        break;
+      }
+    }
+  }
+
+  return count;
+}
 function binSearch(arr, data) {
   var upperBound = arr.length - 1;
   var lowerBound = 0;
 
   while (lowerBound <= upperBound) {
-    var mid = Math.floor((upperBound - lowerBound) / 2);
+    var mid = Math.floor((upperBound + lowerBound) / 2);
     if (data > arr[mid]) {
       lowerBound = mid + 1;
     } else if (data < arr[mid]) {
@@ -29,4 +54,4 @@ function binSearch(arr, data) {
   return -1;
 }
 
-export { seqSearch, binSearch };
+export { seqSearch, binSearch, countTimes };

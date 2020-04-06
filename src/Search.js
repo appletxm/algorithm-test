@@ -11,12 +11,37 @@ function seqSearch(arr, data) {
   return false
 }
 
+function countTimes(arr, data) {
+  let count = 0
+  let pos = binSearch(arr, data)
+  // debugger
+  if (pos >= 0) {
+    count++
+    for (let i = pos - 1; i >= 0; i--) {
+      if (arr[i] === data) {
+        count++
+      } else {
+        break
+      }
+    }
+
+    for (let i = pos + 1; i < arr.length; i++) {
+      if (arr[i] === data) {
+        count++
+      } else {
+        break
+      }
+    }
+  }
+
+  return count
+}
 function binSearch(arr, data) {
   let upperBound = arr.length - 1
   let lowerBound = 0
 
   while (lowerBound <= upperBound) {
-    const mid = Math.floor((upperBound - lowerBound) / 2)
+    const mid = Math.floor((upperBound + lowerBound) / 2)
     if (data > arr[mid]) {
       lowerBound = mid + 1
     } else if (data < arr[mid]) {
@@ -29,4 +54,4 @@ function binSearch(arr, data) {
   return -1
 }
 
-export { seqSearch, binSearch }
+export { seqSearch, binSearch, countTimes }
