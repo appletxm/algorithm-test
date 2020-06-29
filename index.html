@@ -269,6 +269,29 @@
     console.info('****************package**********************')
     const getMax = packageFn()
     console.info(`getMax: ${JSON.stringify(getMax)}`)
+
+    console.info('******************get sibling group***********************')
+    var arr = quickSort([1, 12, 2, 11, 3, 9, 8, 5])
+    console.info(arr)
+    var countArr = []
+    for (var i = 0; i < arr.length; i++) {
+      if (countArr.length > 0) {
+        var cellArr = countArr[countArr.length - 1]
+        if (cellArr.length > 0) {
+          if (arr[i] - cellArr[cellArr.length - 1] === 1) {
+            cellArr.push(arr[i])
+          } else {
+            countArr.push([arr[i]])
+          }
+        } else {
+          countArr.push([arr[i]])
+        }
+      } else {
+        countArr.push([arr[i]])
+      }
+    }
+
+    console.info(countArr)
   </script>
 </body>
 </html>
