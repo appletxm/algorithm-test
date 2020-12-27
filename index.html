@@ -43,6 +43,7 @@
     import { seqSearch, binSearch, countTimes } from './src/Search.js'
     import SearchCommonWord from './src/SearchCommonWord.js'
     import { packageFn } from './src/Package.js'
+    import dicae from './src/dicae.js'
 
     sortAlgorithm.bubbule([3, 10, 2, 1])
     sortAlgorithm.selectionSort([3, 10, 2, 1])
@@ -292,6 +293,10 @@
     }
 
     console.info(countArr)
+
+    console.info('********dicae********')
+    const source = [[1, 2, 3], ['a1', 'a2', 'a3']]
+    dicae([], source)
   </script>
 </body>
 </html>
