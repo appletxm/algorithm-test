@@ -12,7 +12,9 @@ function getImageFile (req, res) {
 }
 
 function getHtmlFile (req, res) {
-  let htmlFilePath = path.join(__dirname, '../index.html')
+  const url =  req.originalUrl
+  const htmlFileName = url.match(/([^\/]+\.html)$/)
+  let htmlFilePath = path.join(__dirname, `../${htmlFileName && htmlFileName[1] ? htmlFileName[1] : 'index.html'}`)
   let html = fs.readFileSync(htmlFilePath)
 
   res.set('content-type', 'text/html')
