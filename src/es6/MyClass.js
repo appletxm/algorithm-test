@@ -1,8 +1,14 @@
-class Complex {
+class ComplexClass {
   constructor(real, imaginary) {
     this.r = real
     this.i = imaginary
+
+    console.log(new.target.name)
   }
+
+  // #myProperty = '999'
+
+  static myProperty2 = '8888'
 
   plus(that) {
     return new Complex(this.r + that.r, this.i + that.i)
@@ -28,3 +34,11 @@ class Complex {
     return this.i
   }
 }
+
+class Child extends ComplexClass {
+  constructor(real, imaginary) {
+    super(real, imaginary)
+  }
+}
+
+export default ComplexClass

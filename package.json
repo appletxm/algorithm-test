@@ -4,14 +4,18 @@
   "private": false,
   "scripts": {
     "eslint": "eslint --config .eslintrc.js src/js/**/*.js",
-    "start": "concurrently --kill-others \"npm run babel-watch\" \"npm run server\"",
+    "start": "npm run dev",
     "dev": "concurrently --kill-others \"npm run babel-watch\" \"npm run server\"",
     "babel": "babel src --out-dir dist --source-maps inline",
     "babel-watch": "babel src --out-dir dist --watch",
-    "server": "node scripts/server.js"
+    "server": "node scripts/server.js",
+    "debug": "concurrently --kill-others \"npm run babel-watch\" \"node --inspect scripts/server.js\"",
+    "debugJWT": "node --inspect scripts/jwt-server.js"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^2.0.1",
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.8",

@@ -18,7 +18,66 @@
 <body>
   <script src="assets/js/BrowserSystem.js"></script>
   <script type="module">
-    
+    import ComplexClass from './src/es6/MyClass.js'
+
+    console.log(ComplexClass.myProperty2, ComplexClass.sum)
+    const complex = new ComplexClass(3, 2)
+    const ComplexClass2 = class extends ComplexClass {}
+    console.log(ComplexClass2.myProperty2, ComplexClass.sum)
+
+    import('./src/es6/test-module.js').then(res => {
+      console.log('**dynamic import result**', res)
+    }).catch(err => {
+      console.log('**dynamic import error**', err)
+    })
+
+    console.log(import.meta)
   </script>
+
+  <script>
+    function generateFile(buffer) {
+      var blob = new Blob([buffer], {type: "application/json"})
+      var fileName = 'file.json'
+    
+      if (window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(blob, fileName)
+        return false
+      }
+
+      var url = URL.createObjectURL(blob)
+      // window.open(url)
+      var a = document.createElement('a')
+      var body = document.querySelector('body')
+
+      console.info('before:', url)
+
+      if (url.indexOf(window.location.host) < 0) {
+        url = url.replace(/^(blob:)(.+)$/, function(str, $1, $2) {
+          return $1 + (window.location.protocol + '//' + window.location.host + '/') + $2
+        })
+      }
+
+      console.info('after:', url)
+
+      a.href = url
+      a.download = fileName
+      body.appendChild(a)
+      a.click()
+      body.removeChild(a)
+    }
+
+
+    fetch(`/proxy?url=${encodeURIComponent('https://sch.apiairasia.com/station/v2/zh-cn/file.json')}`).then(metaRes => {
+      debugger
+      return metaRes.arrayBuffer()
+    }).then(res => {
+      console.log('==res===', res)
+      generateFile(res)
+    }).catch(err => {
+      console.log('==err===', err)
+    })
+  </script>
+
+  <!-- <script sc="./dist/es6/MyClass.js"></script> -->
 </body>
 </html>

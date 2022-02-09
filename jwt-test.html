@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en" style="font-size: 100px;">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+  <title>es6 feature test</title>
+  <link rel="icon" href="assets/images/logo.ico" type="image/png">
+  <style>
+    body{
+      font-size: .12rem;
+    }
+  </style>
+</head>
+
+<body>
+  <script type="module">
+    // WMP_orJ8N443L6L1zuwowPpsvLg19uEw
+
+    fetch('http://localhost:5000/user/generateToken', {
+      method: 'POST'
+    }).then(metaRes => {
+      debugger
+      return metaRes.json()
+    }).then(res => {
+      console.log('==res===', res)
+      generateFile(res)
+    }).catch(err => {
+      console.log('==err===', err)
+    })
+
+    // fetch(`/proxy?url=${encodeURIComponent('https://sch.apiairasia.com/station/v2/zh-cn/file.json')}`).then(metaRes => {
+    //   debugger
+    //   return metaRes.arrayBuffer()
+    // }).then(res => {
+    //   console.log('==res===', res)
+    //   generateFile(res)
+    // }).catch(err => {
+    //   console.log('==err===', err)
+    // })
+  </script>
+
+  <!-- <script sc="./dist/es6/MyClass.js"></script> -->
+</body>
+</html>
