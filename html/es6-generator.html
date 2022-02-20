@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en" style="font-size: 100px;">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+  <title>es6 feature test</title>
+  <link rel="icon" href="../assets/images/logo.ico" type="image/png">
+  <style>
+    body{
+      font-size: .12rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <script src="assets/js/BrowserSystem.js"></script> -->
+  <script type="module">
+    import all from '../src/es6/generator.js'
+    const { gen } = all
+    let g = gen();
+    console.log([...g])
+  </script>
+</body>
+</html>

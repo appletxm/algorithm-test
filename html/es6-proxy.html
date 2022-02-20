@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="en" style="font-size: 100px;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <title>es6 feature test</title>
+  <link rel="icon" href="../assets/images/logo.ico" type="image/png">
+  <style>
+    body {
+      font-size: .12rem;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- <script src="assets/js/BrowserSystem.js"></script> -->
+  <script type="module">
+    function proxyBase() {
+      const target = {}
+      const handler = {
+        get(target, property) {
+          target[property] = property in target ? target[property] : 'new'
+          console.log('proxy handle get: ', property, target[property])
+          return target[property]
+        }
+      }
+      const proxy = new Proxy(target, handler)
+
+      proxy.a = 9
+      proxy.b = 8
+
+      console.log('====', proxy.a, proxy.b, proxy.c)
+    }
+    
+    function proxyRevocable() {
+      const revocable = Proxy.revocable({}, {
+        get(target, property) {
+          return 555
+        }
+      })
+      const rp = revocable.proxy
+      console.log('rp:', rp.test)
+      revocable.revoke()
+      // console.log('rp:', rp.test)
+    }
+
+    function proxyFun() {
+      function monster1(disposition) {
+        this.disposition = disposition;
+      }
+
+      const handler1 = {
+        construct(target, args) {
+          console.log('monster1 constructor called', target, args);
+          // expected output: "monster1 constructor called"
+
+          return new target(...args);
+        }
+      };
+
+      const proxy1 = new Proxy(monster1, handler1);
+
+      console.log(new proxy1('fierce').disposition);
+      // expected output: "fierce"
+    }
+  
+    proxyFun()
+
+  function extend(sup, base) {
+    var descriptor = Object.getOwnPropertyDescriptor(
+      base.prototype, "constructor"
+    );
+
+    base.prototype = Object.create(sup.prototype);
+    
+    var handler = {
+      construct: function(target, args) {
+        var obj = Object.create(base.prototype);
+        this.apply(target, obj, args);
+        return obj;
+      },
+      apply: function(target, that, args) {
+        sup.apply(that, args);
+        base.apply(that, args);
+      }
+    };
+    var proxy = new Proxy(base, handler);
+    descriptor.value = proxy;
+    Object.defineProperty(base.prototype, "constructor", descriptor);
+    return proxy;
+  }
+  
+  </script>
+</body>
+
+</html>

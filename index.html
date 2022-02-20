@@ -12,6 +12,15 @@
     body{
       font-size: .12rem;
     }
+
+    img {
+      width: 200px;
+    }
+
+    table td{
+      width: 30px;
+      background-color: red;
+    }
   </style>
 </head>
 
@@ -21,7 +30,7 @@
   <!-- <script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script> -->
   <input type="file" id="test-file-txt">
 
-  <script src="assets/js/BrowserSystem.js"></script>
+  <!-- <script src="assets/js/BrowserSystem.js"></script>
   <script type="module">
     // import test from './src/algorithm-test/test.js'
     import sortAlgorithm from './src/algorithm-test/algorithm-sort.js'
@@ -298,5 +307,73 @@
     const source = [[1, 2, 3], ['a1', 'a2', 'a3']]
     dicae([], source)
   </script>
+
+  <img srcset="assets/images/rc-code.jpg 2x, assets/images/bg.jpg 200w" /> -->
+
+  <table id="ta-test">
+    <tr><td>1</td></tr>
+    <tr><td>2</td></tr>
+    <tr><td>3</td></tr>
+    <tr><td>4</td></tr>
+    <tr><td>5</td></tr>
+  </table>
+
+  <script>
+    const trs = document.querySelectorAll('#ta-test tr')
+    for(let i = 0; i < trs.length; i++) {
+      // console.log('click tr:', i)
+      trs[i].addEventListener('click', () => {
+        console.log('index:', i)
+      })
+    }
+
+    // async function async1() {
+    //   console.log('async1 start');
+    //   await async2();
+    //   console.log('async1 end');
+    // }
+
+    // async function async2() {
+    //   console.log('async2');
+    // }
+
+    // console.log('script start');
+
+    // setTimeout(function() {
+    //  console.log('setTimeout');
+    // }, 0);
+
+    // async1();
+
+    // new Promise(function(resolve) {
+    //   console.log('promise1');
+    //   resolve();
+    // }).then(function() {
+    //   console.log('promise2');
+    // });
+
+    // console.log('script end');
+
+
+    // console.log('script start');
+    // console.log('async1 start');
+    // console.log('async2');
+    // console.log('promise1');
+    // console.log('script end');
+    // console.log('async1 end');
+    // console.log('promise2');
+    // console.log('setTimeout');
+
+    // console.log('script start');
+    // console.log('async1 start');
+    // console.log('promise1')
+    // console.log('script end');
+    // console.log('async2');
+    // console.log('promise2');
+    // console.log('setTimeout');
+    // console.log('async1 end');
+  </script>
+
+
 </body>
 </html>

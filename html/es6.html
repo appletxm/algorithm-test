@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en" style="font-size: 100px;">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+  <title>es6 feature test</title>
+  <link rel="icon" href="../assets/images/logo.ico" type="image/png">
+  <style>
+    body{
+      font-size: .12rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <script src="assets/js/BrowserSystem.js"></script> -->
+  <script type="module">
+    import iteratorSamples from '../src/es6/iterator.js'
+    const { map, Range, word } = iteratorSamples
+    const range = new Range(1, 5)
+
+    // console.log([...range])
+    // for(let i of range) console.log(i)
+    console.log([...map(new Range(1,3), x => x * x)])
+    console.log([...word('this is my long long string')])
+
+    const nw = word('this is my long long string')
+    for(let w of nw) {
+      if (w === 'long') {
+        break
+      }
+    }
+  </script>
+</body>
+</html>

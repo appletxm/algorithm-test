@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en" style="font-size: 100px;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <title>es6 feature test</title>
+  <link rel="icon" href="../assets/images/logo.ico" type="image/png">
+  <style>
+    body {
+      font-size: .12rem;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- <script src="assets/js/BrowserSystem.js"></script> -->
+  <script type="module">
+    function reflectSample1() {
+      function OneClass() {
+        this.name = 'one';
+      }
+
+      function OtherClass() {
+        this.name = 'other';
+      }
+
+      // 创建一个对象:
+      var obj1 = Reflect.construct(OneClass, [1, 2, 3], OtherClass);
+
+      // 与上述方法等效:
+
+      console.log(obj1, OtherClass.prototype)
+
+      var obj2 = Object.create(OtherClass.prototype);
+      OneClass.apply(obj2, [1, 2,  3]);
+
+      console.log(obj1.name); // 'one'
+      console.log(obj2.name); // 'one'
+
+      console.log(obj1 instanceof OneClass); // false
+      console.log(obj2 instanceof OneClass); // false
+
+      console.log(obj1 instanceof OtherClass); // true
+      console.log(obj2 instanceof OtherClass); // true
+    }
+
+    reflectSample1()
+  </script>
+</body>
+
+</html>

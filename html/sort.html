@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en" style="font-size: 100px;">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+  <title>es6 feature test</title>
+  <link rel="icon" href="../assets/images/logo.ico" type="image/png">
+  <style>
+    body{
+      font-size: .12rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <script src="assets/js/BrowserSystem.js"></script> -->
+  <script type="module">
+    import sorts from '../src/algorithm-test/sorts.js'
+    import utils from '../src/algorithm-test/utils.js'
+
+    // const arr = [3, 4, 15,80,7, 2, 6, 5, 8, 9, 10, 16, 13]
+    const arr = utils.generateData(5000, 100000)
+    // console.log('arr = ', arr)
+
+    const bubbleStart = new Date().getTime()
+    const bubbleRes = sorts.bubble(arr)
+    console.log('bubble time:', (new Date().getTime()) - bubbleStart, bubbleRes)
+
+    const quickStart = new Date().getTime()
+    const quickRes = sorts.quick(arr)
+    console.log('quick time:', (new Date().getTime()) - quickStart, quickRes)
+
+    const selectStart = new Date().getTime()
+    const selectRes = sorts.quick(arr)
+    console.log('select time:', (new Date().getTime()) - selectStart, selectRes)
+  </script>
+</body>
+</html>

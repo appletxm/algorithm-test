@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en" style="font-size: 100px;">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+  <title>es6 feature test</title>
+  <link rel="icon" href="../assets/images/logo.ico" type="image/png">
+  <style>
+    body{
+      font-size: .12rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <script src="assets/js/BrowserSystem.js"></script> -->
+  <script type="module">
+    import bst from '../src/algorithm-test/Binary-Search-Tree.js'
+    
+    const { Node, Tree } = bst
+    const arr = [23, 45, 16, 37, 3, 99, 22]
+    const tree = new Tree()
+
+    for(let i = 0; i < arr.length; i++) {
+      const node = new Node(arr[i])
+      tree.insert(node)
+    }
+
+    console.log(tree)
+    console.log('inOrder: ', tree.inOrder())
+    console.log('preOrder: ', tree.preOrder())
+    console.log('postOrder: ', tree.postOrder())
+    console.log('getMin: ', tree.getMin())
+    console.log('getMax: ', tree.getMax())
+    console.log('find 8: ', tree.find(8))
+    console.log('find 23: ', tree.find(23))
+  </script>
+</body>
+</html>
