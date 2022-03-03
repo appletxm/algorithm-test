@@ -25,13 +25,28 @@ function quick(data) {
     return data
   }
 
-  const pivotIndex = Math.floor(len / 2)
-  const pivot = data.splice(pivotIndex, 1)[0]
+  // const pivotIndex = Math.floor(len / 2)
+  // const pivot = data.splice(pivotIndex, 1)[0]
+  // const left = []
+  // const right = []
+  // const len2 = data.length
+
+  // for(let i = 0; i < len2; i++) {
+  //   if (data[i] < pivot) {
+  //     left.push(data[i])
+  //   } else {
+  //     right.push(data[i])
+  //   }
+  // }
+
+  // return quick(left).concat([pivot], quick(right))
+
+  const pivotIndex = 0
+  const pivot = data[pivotIndex]
   const left = []
   const right = []
-  const len2 = data.length
 
-  for(let i = 0; i < len2; i++) {
+  for(let i = 1; i < len; i++) {
     if (data[i] < pivot) {
       left.push(data[i])
     } else {

@@ -1,6 +1,6 @@
 function bubbule(arr) {
   for (let i = 0; i < arr.length - 1; i++) {
-    console.info(arr)
+    // console.info(arr)
     for (let j = 0; j < arr.length - 1 - i; j++) {
       let tmp = arr[j]
       if (arr[j] > arr[j + 1]) {

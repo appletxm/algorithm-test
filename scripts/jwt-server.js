@@ -14,15 +14,15 @@ app.listen(port, () => {
   console.log(`Server is up and running on ${port} ...`);
 });
 
-app.post("/user/generateToken", (req, res) => {
-  // let jwtSecretKey = 'InURs6IlvTU74piBYzxb5qQl2NkC54zl' //stg
-  const jwtSecretKey = 'HDRzl6OZvOLIAiyOeIIif0dRxzgBvM22' // prod
+app.get("/user/generateToken", (req, res) => {
+  let jwtSecretKey = 'InURs6IlvTU74piBYzxb5qQl2NkC54zl' //stg 
+  // const jwtSecretKey = 'HDRzl6OZvOLIAiyOeIIif0dRxzgBvM22' // prod
   const iat = Math.floor(Date.now() / 1000)
   const exp = iat + (24 * 60 * 60)
 
   const data = {
-    // iss: 'Pt7WLcACsCyGUERhd2QqfERs3jhe0ViL', // stg
-    iss: 'N2hkMwSTa4giJH8bKOPQzoWMaryr3JQo', // prd
+    iss: 'Pt7WLcACsCyGUERhd2QqfERs3jhe0ViL', // stg
+    // iss: 'N2hkMwSTa4giJH8bKOPQzoWMaryr3JQo', // prd
     iat,
     exp
   }
